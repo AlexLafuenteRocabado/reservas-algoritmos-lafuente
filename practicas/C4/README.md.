@@ -1,1 +1,17 @@
-
+C4 - Comparación de búsqueda lineal y búsqueda binaria
+Objetivo
+Comparar el rendimiento de los algoritmos de búsqueda lineal y búsqueda binaria utilizando un conjunto de 1.000.000 de elementos.
+Protocolo de medición
+Se utilizaron los mismos datos ordenados para ambos algoritmos.
+Se realizó un calentamiento antes de comenzar las mediciones.
+Se ejecutaron tres mediciones para cada algoritmo.
+Se calculó el promedio de los tres tiempos.
+Se calculó el cociente entre el tiempo promedio lineal y el binario.
+Resultados
+Algoritmo    Tiempo promedio (ms)
+Búsqueda lineal   2.91900ms
+Búsqueda binaria  0,031933 ms
+Cociente lineal/binaria   91,28 veces
+Conclusión
+En esta práctica comparé la búsqueda lineal y la binaria en un arreglo ordenado de 1,000,000 de elementos, buscando el último valor (peor caso para la lineal), con un calentamiento previo y el promedio de tres mediciones.
+La búsqueda binaria fue muchísimo más rápida. La lineal es O(n) y revisa los elementos uno por uno, mientras que la binaria es O(log n) y descarta la mitad del arreglo en cada paso, por lo que necesita unas 20 comparaciones. Aprendí que la binaria exige que los datos estén ordenados, pero cuando se hacen muchas búsquedas sobre los mismos datos, es la mejor opción. En conclusión, elegir bien el algoritmo tiene un gran impacto en el rendimiento.
