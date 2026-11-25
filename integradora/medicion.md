@@ -3,9 +3,7 @@ Alex Lafuente Rocabado
 I3 — Medición
 
 1. Protocolo
-- Carga: `EjecutarCarga` (n paquetes al azar con semilla n, capacidad = un tercio del peso total).
 - Por cada tamaño y por cada solución: 1 corrida de calentamiento (descartada) + 3 corridas medidas; se reporta el promedio.
-- Se verificó que ambas soluciones devuelven la MISMA ganancia en cada tamaño.
  2. Ingenua vs mejorada
 
 | n | Ingenua (ms) | vs fila anterior | Mejorada (ms) | vs fila anterior | misma ganancia |
