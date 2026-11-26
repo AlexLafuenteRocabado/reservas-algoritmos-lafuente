@@ -3,7 +3,7 @@ Alex Lafuente Rocabado
 Mi proceso
 Trabajo vendiendo laptops nuevas y seminuevas. Hoy no tenemos un sistema: todo el registro de equipos (qué hay, a qué precio, cuál se vendió) se anota a mano por escrito. 
 Los jefes manejan unos 40 a 50 equipos y en el depósito hay más. 
-Este repositorio recoge cómo fui usando lo que aprendí en la materia (Ingeniería de Sistemas) para pensar ese proceso con datos y estructuras en lugar de papel.
+Este repositorio recoge cómo fui usando para pensar ese proceso con datos y estructuras en lugar de papel.
 
 Cómo está organizado el repositorio
 
