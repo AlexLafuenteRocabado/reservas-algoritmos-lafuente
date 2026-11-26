@@ -1,19 +1,24 @@
-#H2 – Medición: estructura ingenua vs adecuada
+H2 - Medición
+Problema
+Buscar un equipo por su código en el registro de equipos. 
+Es la operación que más se repite en mi caso, y la resuelvo con dos estructuras:
+Ingenua: List<Equipo>, recorriendo la lista hasta encontrar el código (O(n)).
+Adecuada: Dictionary<string, Equipo>, tabla hash (O(1) promedio).
+Código: Medicion.cs (lenguaje C#).
 
-Dado el registro de n equipos (código, marca, precio), atender 1.000 consultas "¿existe el equipo con este código?" (90% existen, 10% no).
-Ingenua: lista con búsqueda lineal → O(n) por consulta.
-Adecuada: diccionario (tabla hash) por código → O(1) promedio por consulta.
 Protocolo
-Una corrida de calentamiento descartada, luego 3 repeticiones y se promedian. 
+Tamaños que se duplican: 10.000, 20.000, 40.000 y 80.000 equipos.
+Por cada tamaño se hacen 2.000 consultas de códigos que existen, elegidos al azar con semilla fija (siempre las mismas).
+Se hace un calentamiento antes de medir y se miden 3 corridas, y se promedian.
+Se verifica que las dos estructuras encuentren exactamente los mismos equipos antes de comparar tiempos.
+Se mide con Stopwatch. Los tiempos cambian según la máquina y tienen algo de ruido, así que importa la tendencia.
 Resultados
-| n | Lista (ms) | x vs anterior | Diccionario (ms) | x vs anterior |
-| 5.000 | 61,562 | - | 0,0454 | - |
-| 10.000 | 162,990 | 2,65 | 0,0524 | 1,15 |
-| 20.000 | 251,649 | 1,54 | 0,0535 | 1,02 |
-| 40.000 | 502,356 | 2,00 | 0,0555 | 1,04 |
-
+n        List (ms)    Dictionary (ms)   x
+10000        100,29           0,2550   393
+20000        165,40           0,2994   552
+40000        350,64           0,2467   1421
+80000        728,73           0,3038   2398
 Conclusión
-1. La lista tarda en promedio unas 2,1 veces más cada vez que duplico n (2,65; 1,54; 2,00), lo que coincide con O(n), que predice ×2.
-2. El diccionario casi no cambia al duplicar n (entre ×1,02 y ×1,15), coherente con O(1). A 40.000 equipos la lista es unas 9.000 veces más lenta que el diccionario.
-3. Ruido: las razones de la lista no son exactamente 2 (saltan de 2,65 a 1,54) y los tiempos del diccionario son de centésimas de milisegundo,
-4. Mi caso real son unos 40–50 equipos: ahí la diferencia no se notaría. La estructura adecuada importa si el registro crece a miles.
+El diccionario fue muchísimo más rápido que la lista. Al duplicar los equipos, el tiempo de la lista casi se duplicaba también (100, 165, 350 y 729 ms), como se espera de O(n), mientras que el diccionario se mantuvo casi igual (alrededor de 0,25 a 0,30 ms), como corresponde a O(1). Con 80.000 equipos fue unas 2.400 veces más rápido.
+
+Con los 40 o 50 equipos de hoy la diferencia no se notaría, pero elijo el diccionario porque buscar por código es mi operación más frecuente y no se vuelve más lenta si el registro crece.
